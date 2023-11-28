@@ -37,6 +37,6 @@ public class DecimalToRomano {
             decimal -= DECIMAL[i] * parteInteira;
             resultado.append(join("", nCopies(parteInteira, ROMANO[i])));
         }
-        return "O número decimal " + this.decimal + " em romano é: " + resultado;
+        return resultado.toString();
     }
 }

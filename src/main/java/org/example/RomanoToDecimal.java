@@ -140,7 +140,7 @@ public class RomanoToDecimal {
         return false;
     }
 
-    public String converterEmDecimal() {
+    public Integer converterEmDecimal() {
         int decimal = 0;
         int prevValue = 0;
 
@@ -155,6 +155,6 @@ public class RomanoToDecimal {
             }
             prevValue = currentValue;
         }
-        return ("O número romano " + this.romano + " em decimal é: " + decimal);
+        return decimal;
     }
 }
