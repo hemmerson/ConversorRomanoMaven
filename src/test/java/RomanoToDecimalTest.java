@@ -1,6 +1,8 @@
 import org.example.RomanoToDecimal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -111,4 +113,20 @@ public class RomanoToDecimalTest {
         assertEquals("Número romano inválido. Contém caracteres repetidos antes de um valor maior.", exception3.getMessage());
     }
 
+    @ParameterizedTest(name = "{0} => {1}")
+    @CsvSource({
+            "MMMDXLIX,  3549",
+            "MCMLXXXII, 1982",
+            "MMCCLIII,  2253",
+            "CCCLII,    352",
+            "XCIV,      94"
+    })
+    void valoresCorretos(String romano, int resultado) throws Exception {
+        RomanoToDecimal romanoToDecimal = new RomanoToDecimal();
+        romanoToDecimal.setRomano(romano);
+        assertEquals(
+                resultado, romanoToDecimal.converterEmDecimal(),
+                ()-> "Romano: "+romano+", equivale a "+resultado+" em decimal."
+        );
+    }
 }
